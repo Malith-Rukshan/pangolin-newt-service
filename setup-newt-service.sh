@@ -38,7 +38,7 @@ echo -e "${YELLOW}Paste your Pangolin Newt command and press Enter:${NC}"
 echo -e "${BLUE}Example:${NC}"
 echo "  newt --id b87pbof72mk98nc --secret 6kwq2g92... --endpoint https://mydomain.com --accept-clients"
 echo ""
-read -r PANGOLIN_CMD
+read -r PANGOLIN_CMD </dev/tty
 
 # Validate input
 if [[ ! "$PANGOLIN_CMD" =~ "newt" ]] || [[ ! "$PANGOLIN_CMD" =~ "--id" ]]; then
