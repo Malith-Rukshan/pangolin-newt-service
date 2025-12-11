@@ -1,0 +1,11 @@
+[Unit]
+Description=Newt - Pangolin Tunnel Client
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/newt --id YOUR_ID --secret YOUR_SECRET --endpoint https://your-endpoint.com
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
