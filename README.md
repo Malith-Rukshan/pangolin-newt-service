@@ -6,6 +6,14 @@
 
 Run [Pangolin Newt](https://github.com/fosrl/newt) as a persistent background service on Linux using systemd. Prevents Newt from stopping when you close your terminal.
 
+## ✨ Now with Interactive Menu & Newt 1.7.0 Support!
+
+This script now includes an interactive service manager with:
+- 🔄 **One-click migration** to Newt 1.7.0
+- ➕ **Add/Update** services
+- 📊 **Check status** and view logs
+- 🔧 **Restart/Stop** services easily
+
 ## What is Pangolin Newt?
 
 [Newt](https://github.com/fosrl/newt) is a WireGuard tunnel client that works with [Pangolin](https://pangolin.net) to securely expose private resources without complex network configurations. It's part of the Pangolin tunneling platform ecosystem.
@@ -14,6 +22,13 @@ Run [Pangolin Newt](https://github.com/fosrl/newt) as a persistent background se
 
 **Solution:** This repository provides an automated script to set up Newt as a systemd service that runs persistently in the background.
 
+## 🆕 What's New in Newt 1.7.0?
+
+**Important Changes:**
+- ✅ `--accept-clients` is now **enabled by default** (no need to specify it)
+- 🚫 Use `--disable-clients` if you want to disable client connections
+- 🔄 Existing services can be auto-migrated using the script's migration tool
+
 ## 🚀 Quick Setup
 
 ### Prerequisites
@@ -21,24 +36,35 @@ Run [Pangolin Newt](https://github.com/fosrl/newt) as a persistent background se
 1. Install Newt using Pangolin's official installer
 2. Get your Newt credentials (ID, secret, endpoint) from Pangolin dashboard
 
-### Automated Installation
+### Interactive Installation
 
-Run this one-liner and paste your Pangolin command when prompted:
+Run the script to access the interactive menu:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/Malith-Rukshan/pangolin-newt-service/main/setup-newt-service.sh | sudo bash
+sudo bash setup-newt-service.sh
 ```
 
-The script will:
-- ✅ Verify Newt binary installation
-- ✅ Extract your ID, secret, endpoint, and flags
-- ✅ Create systemd service configuration
-- ✅ Enable and start the service automatically
+**Or** download and run directly:
 
-**Example Pangolin command:**
 ```bash
-newt --id b87pbof72mk98nc --secret 6kwq2g92uihpmue0fvlymjeupuiwbhejd0fladk1iu68j6g4 --endpoint https://mydomain.com --accept-clients
+curl -sSL https://raw.githubusercontent.com/Malith-Rukshan/pangolin-newt-service/main/setup-newt-service.sh -o setup-newt-service.sh
+sudo bash setup-newt-service.sh
 ```
+
+The interactive menu provides:
+1. **Migrate to Newt 1.7.0** - Auto-fix existing services
+2. **Add New Service** - Create or update Newt service
+3. **Check Service Status** - View current status
+4. **View Service Logs** - Real-time log monitoring
+5. **Restart Service** - Restart the service
+6. **Stop Service** - Stop the service
+
+**Example Pangolin command (Newt 1.7.0+):**
+```bash
+newt --id b87pbof72mk98nc --secret 6kwq2g92uihpmue0fvlymjeupuiwbhejd0fladk1iu68j6g4 --endpoint https://mydomain.com
+```
+
+**Note:** No need for `--accept-clients` in 1.7.0+, it's enabled by default!
 
 ## 📋 Manual Setup
 
@@ -68,7 +94,10 @@ User=root
 WantedBy=multi-user.target
 ```
 
-**Note:** Add any additional flags like `--accept-clients`, `--log-level DEBUG`, etc.
+**Note for Newt 1.7.0+:**
+- Client connections are enabled by default (no need for `--accept-clients`)
+- Add `--disable-clients` if you want to disable client connections
+- Add any additional flags like `--log-level DEBUG`, etc.
 
 ### 3. Enable and Start
 
@@ -86,27 +115,36 @@ sudo systemctl status newt.service
 
 ## 🔧 Service Management
 
-### View Real-time Logs
+### Using the Interactive Menu (Recommended)
+
+Simply run the script again to access all management options:
+```bash
+sudo bash setup-newt-service.sh
+```
+
+### Manual Commands
+
+**View Real-time Logs:**
 ```bash
 sudo journalctl -u newt.service -f
 ```
 
-### Restart Service
+**Restart Service:**
 ```bash
 sudo systemctl restart newt.service
 ```
 
-### Stop Service
+**Stop Service:**
 ```bash
 sudo systemctl stop newt.service
 ```
 
-### Disable Auto-start
+**Disable Auto-start:**
 ```bash
 sudo systemctl disable newt.service
 ```
 
-### Check Service Status
+**Check Service Status:**
 ```bash
 sudo systemctl status newt.service
 ```

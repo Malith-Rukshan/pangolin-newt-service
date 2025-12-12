@@ -1,3 +1,11 @@
+# Newt Service Template for systemd
+# Save this file as: /etc/systemd/system/newt.service
+#
+# Important Notes for Newt 1.7.0+:
+# - Client connections are ENABLED BY DEFAULT (no need for --accept-clients)
+# - Use --disable-clients if you want to disable client connections
+# - Add any additional flags like --log-level DEBUG after the endpoint
+
 [Unit]
 Description=Newt - Pangolin Tunnel Client
 After=network.target
@@ -9,3 +17,9 @@ User=root
 
 [Install]
 WantedBy=multi-user.target
+
+# After editing this file:
+# 1. sudo systemctl daemon-reload
+# 2. sudo systemctl enable newt.service
+# 3. sudo systemctl start newt.service
+# 4. sudo systemctl status newt.service
