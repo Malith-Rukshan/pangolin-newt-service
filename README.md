@@ -6,6 +6,8 @@
 
 Run [Pangolin Newt](https://github.com/fosrl/newt) as a persistent background service on Linux using systemd. Prevents Newt from stopping when you close your terminal.
 
+<img width="1554" height="1234" alt="Pangolin Newt System Service SS" src="https://github.com/user-attachments/assets/e25f956b-1e4e-420f-8b32-42c37cf7ceec" />
+
 ## ✨ Now with Interactive Menu & Newt 1.7.0 Support!
 
 This script now includes an interactive service manager with:
