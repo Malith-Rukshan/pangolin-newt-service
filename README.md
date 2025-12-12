@@ -1,4 +1,4 @@
-# Pangolin Newt Systemd Service
+# Pangolin Newt Service Manager
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub Issues](https://img.shields.io/github/issues/Malith-Rukshan/pangolin-newt-service)](https://github.com/Malith-Rukshan/pangolin-newt-service/issues)
